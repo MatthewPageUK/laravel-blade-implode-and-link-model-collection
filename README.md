@@ -1,6 +1,6 @@
 # Laravel Blade Implode and Link Model Collection
 
-A Laravel and Blade component to show a linked list of models.
+A Laravel Blade component to show a linked list of models with comma and final 'and' seperators.
 
 Given a collection of models the default component will produce the following HTML.
 
@@ -13,15 +13,19 @@ Given a collection of models the default component will produce the following HT
 </span>
 ```
 
+## Installation
+
+todo
+
 ## Usage
 
 ```blade
   <x-implode-and-link-model-collection :models="$project->skills" />
 ```
 
-### Define a custom name
+### Define a custom name / link text
 
-By default the `$mode->name` attribute will be used. You can pass a string to use a different attribute on the mode 
+By default the `$model->name` property will be used as the link text. You can use a different model property by passing the property name in the nameAttribue property of the component. 
 
 ```blade
   <x-implode-and-link-model-collection
@@ -30,7 +34,7 @@ By default the `$mode->name` attribute will be used. You can pass a string to us
   />
 ```
 
-Or you can pass a Closure to define you own name string using the passed in model.
+Or you can pass a Closure to define you own name string using the model that will be passed to it.
 
 ```blade
   <x-implode-and-link-model-collection
@@ -41,7 +45,7 @@ Or you can pass a Closure to define you own name string using the passed in mode
 
 ### Define a custom route
 
-By default the component will use the `routeUrl` attribute on the model as the URL. You can pass any attribute as a string or a Closure to define you own routing.
+By default the component will use the `routeUrl` property on the model as the URL. You can pass any property as a string or a Closure to define you own routing.
 
 ```blade
   <x-implode-and-link-model-collection
@@ -56,6 +60,17 @@ By default the component will use the `routeUrl` attribute on the model as the U
   <x-implode-and-link-model-collection
     :models="$project->skills"
     a-class="text-primary-600 hover:text-secondary-700"
+  />
+```
+
+### Adding CSS to the outer span
+
+To style the outer `span` element you can pass the class property on the component. These classes will be applied to the outer `span`.
+
+```blade
+  <x-implode-and-link-model-collection
+    :models="$project->skills"
+    class="p-2 border rounded-md"
   />
 ```
 
